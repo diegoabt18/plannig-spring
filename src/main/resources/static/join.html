@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Unirse a Sala | Planning Poker</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background: linear-gradient(135deg, #4facfe, #00f2fe);
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          color: #333;
+        }
+
+        .container {
+          background: #fff;
+          padding: 2rem 3rem;
+          border-radius: 1rem;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+          text-align: center;
+          width: 100%;
+          max-width: 400px;
+          animation: fadeIn 0.6s ease-in-out;
+        }
+
+        h1 {
+          margin-bottom: 0.5rem;
+          color: #2c3e50;
+        }
+
+        h2 {
+          margin-top: 0;
+          margin-bottom: 2rem;
+          font-weight: normal;
+          color: #555;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
+          text-align: left;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.7rem;
+          border: 1px solid #ccc;
+          border-radius: 0.5rem;
+          margin-bottom: 1.5rem;
+          font-size: 1rem;
+          transition: border-color 0.2s;
+        }
+
+        input:focus {
+          outline: none;
+          border-color: #4facfe;
+          box-shadow: 0 0 5px rgba(79, 172, 254, 0.6);
+        }
+
+        button {
+          width: 100%;
+          padding: 0.8rem;
+          font-size: 1rem;
+          background: #4facfe;
+          border: none;
+          border-radius: 0.5rem;
+          color: white;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+
+        button:hover {
+          background: #00c6ff;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Planning Poker</h1>
+    <h2>Unirse a la Sala</h2>
+
+    <form id="joinForm" onsubmit="join(event)">
+        <label for="username">Tu nombre:</label>
+        <input id="username" placeholder="Escribe tu nombre" required>
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+<script>
+    function join(event) {
+      event.preventDefault();
+      const name = document.getElementById("username").value.trim();
+      if (!name) return;
+
+      const roomId = window.location.pathname.split("/").pop();
+
+      sessionStorage.setItem("username", name);
+
+      window.location.href = "/room/" + roomId + "/play";
+    }
+</script>
+</body>
+</html>

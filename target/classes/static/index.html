@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Planning Poker - Crear Sala</title>
+    <style>
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: #333;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+
+        .container {
+          background: #fff;
+          padding: 2rem 3rem;
+          border-radius: 1rem;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+          text-align: center;
+          max-width: 400px;
+          width: 100%;
+        }
+
+        h1 {
+          margin-bottom: 0.5rem;
+          font-size: 1.8rem;
+          color: #4a4a4a;
+        }
+
+        h2 {
+          margin-bottom: 2rem;
+          font-size: 1.2rem;
+          font-weight: normal;
+          color: #666;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+          color: #555;
+          text-align: left;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.7rem;
+          border-radius: 0.5rem;
+          border: 1px solid #ccc;
+          margin-bottom: 1.5rem;
+          font-size: 1rem;
+          box-sizing: border-box;
+        }
+
+        button {
+          background: #667eea;
+          color: #fff;
+          padding: 0.8rem 1.5rem;
+          border: none;
+          border-radius: 0.5rem;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        button:hover {
+          background: #5563c1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Planning Poker</h1>
+    <h2>Crear una nueva sala</h2>
+
+    <form id="createRoomForm" onsubmit="createRoom(event)">
+        <label for="roomName">Nombre de la sala (opcional):</label>
+        <input id="roomName" placeholder="ej. sprint-1">
+        <button type="submit">Crear sala</button>
+    </form>
+</div>
+
+<script>
+    function createRoom(event) {
+      event.preventDefault();
+      let room = document.getElementById("roomName").value.trim();
+      if (!room) {
+        // Generar id aleatorio
+        room = "room-" + Math.random().toString(36).substring(2, 8);
+      }
+      window.location.href = "/room/" + room;
+    }
+</script>
+</body>
+</html>

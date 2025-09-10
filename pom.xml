@@ -44,6 +44,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version> <!-- Usa la última versión disponible -->
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
 	</dependencies>
 
 	<build>
